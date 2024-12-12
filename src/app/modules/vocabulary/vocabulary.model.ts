@@ -24,6 +24,7 @@ const vocabularySchema = new Schema<IVocabulary>(
       required: true,
       ref: "Lesson",
     },
+    lesson: { type: Schema.Types.ObjectId, ref: "Lessons", required: true },
     adminEmail: { type: Schema.Types.ObjectId, ref: "Users", required: true },
   },
   { timestamps: true }

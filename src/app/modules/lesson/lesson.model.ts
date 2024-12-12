@@ -16,6 +16,7 @@ const lessonSchema = new Schema<ILesson>(
       type: Number,
       default: 0,
     },
+    vocabulary: [{ type: Schema.Types.ObjectId, ref: "Vocabulary" }],
   },
   { timestamps: true }
 );

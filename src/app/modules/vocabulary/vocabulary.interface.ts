@@ -7,5 +7,6 @@ export type IVocabulary = {
   meaning: string;
   whenToSay: string;
   lessonNo: number;
+  lesson: Types.ObjectId;
   adminEmail: Types.ObjectId;
 };
