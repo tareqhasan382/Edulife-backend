@@ -49,8 +49,19 @@ const allTutorial = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+const deleteTutorial = catchAsync(async (req: Request, res: Response) => {
+  const result = await TutorialModel.findByIdAndDelete(req.params.id);
+
+  sendResponse<ITutorial>(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Tutorial deleted successfully..!!",
+    data: result,
+  });
+});
 export const tutorialController = {
   createTutorial,
   getbyIdTutorial,
   allTutorial,
+  deleteTutorial,
 };

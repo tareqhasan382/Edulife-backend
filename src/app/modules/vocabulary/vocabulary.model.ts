@@ -21,8 +21,7 @@ const vocabularySchema = new Schema<IVocabulary>(
     },
     lessonNo: {
       type: Number,
-      required: true,
-      ref: "Lesson",
+      // required: true,
     },
     lesson: { type: Schema.Types.ObjectId, ref: "Lessons", required: true },
     adminEmail: { type: Schema.Types.ObjectId, ref: "Users", required: true },

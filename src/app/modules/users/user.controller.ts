@@ -122,8 +122,32 @@ const allUser = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+const updateUser = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const data = req.body;
+
+  const updatedUser = await UserModel.findByIdAndUpdate(id, data, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!updatedUser) {
+    return sendResponse(res, {
+      statusCode: StatusCodes.NOT_FOUND,
+      success: false,
+      message: "User not found",
+    });
+  }
+
+  sendResponse<IUser[]>(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Users updated successfully..!!",
+  });
+});
 export const userController = {
   createUser,
   loginUser,
   allUser,
+  updateUser,
 };

@@ -43,7 +43,29 @@ const allLesson = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+const singleLesson = catchAsync(async (req: Request, res: Response) => {
+  const result = await LessonModel.findById(req.params.id);
+
+  sendResponse<ILesson>(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Lesson fetch successfully..!!",
+    data: result,
+  });
+});
+const deleteLesson = catchAsync(async (req: Request, res: Response) => {
+  const result = await LessonModel.findByIdAndDelete(req.params.id);
+
+  sendResponse<ILesson>(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Lesson deleted successfully..!!",
+    data: result,
+  });
+});
 export const lessonController = {
   createLesson,
   allLesson,
+  singleLesson,
+  deleteLesson,
 };
